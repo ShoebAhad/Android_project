@@ -20,6 +20,7 @@ public class MainActivity4 extends MainActivity3 {
         listView=findViewById(R.id.listview1);
         ArrayAdapter<String> adapter =new ArrayAdapter<String>(MainActivity4.this, android.R.layout.simple_dropdown_item_1line,cities);
         listView.setAdapter(adapter);
+        //TODO:Listview add for onclick button;
 
       /*  Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.numbers, android.R.layout.simple_spinner_item);
