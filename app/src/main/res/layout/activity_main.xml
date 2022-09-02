@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -23,14 +23,14 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/textviewborder"
-        android:drawableLeft="@drawable/ic_baseline_search"
         android:hint="Search here"
         android:paddingLeft="20dp"
         android:paddingTop="5dp"
         android:shadowColor="#F10A0A"
         android:textAlignment="center"
         android:textColorHint="#887A7A"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:drawableLeftCompat="@drawable/ic_baseline_search" />
 
     <TextView
         android:id="@+id/datepicker"
@@ -73,3 +73,4 @@
         android:backgroundTint="#E53935"
         android:text="Search" />
 
+</LinearLayout>
