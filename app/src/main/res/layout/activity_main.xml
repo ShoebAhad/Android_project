@@ -1,25 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/back"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".MainActivity" >
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/imageView13"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="210dp"
+        app:srcCompat="@drawable/uppp" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
+    <TextView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/textviewborder"
+        android:drawableLeft="@drawable/ic_baseline_search"
+        android:hint="Search here"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:shadowColor="#F10A0A"
+        android:textAlignment="center"
+        android:textColorHint="#887A7A"
+        android:textSize="20sp" />
 
-            app:srcCompat="@drawable/upp" />
-    </LinearLayout>
-</RelativeLayout>
+    <TextView
+        android:id="@+id/datepicker"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/textviewborder"
+        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+        android:drawablePadding="10dp"
+        android:hint="Select Date"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:textAlignment="center"
+        android:textColorHint="#837C7C"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/guest"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/textviewborder"
+        android:drawableLeft="@drawable/ic_baseline_person"
+        android:hint="Select guests"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:textAlignment="center"
+        android:textColorHint="#6C6262"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button33"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="#E53935"
+        android:text="Search" />
+
