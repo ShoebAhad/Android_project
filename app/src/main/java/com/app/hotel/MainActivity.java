@@ -38,15 +38,14 @@ public class MainActivity extends splash_activity {
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayofmonth) {
-                month = month + 1;
-                String date = day + "/" + month + "/" + year;
-                textView.setText(date);
+                    month = month + 1;
+                 String date = day + "/" + month + "/" + year;
+                 textView.setText(date);
 
             }
         };
 /*        public void openActivity2() {
             Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-            startActivity(intent);
         } */
 
     }
