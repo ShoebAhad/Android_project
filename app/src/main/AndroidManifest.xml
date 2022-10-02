@@ -19,7 +19,7 @@
             android:name=".guest_size"
             android:exported="false" />
         <activity
-            android:name=".splash_activity"
+            android:name=".SplashActivity"
             android:exported="true" >
             "
             <intent-filter>
@@ -29,7 +29,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".MainActivity2" />
         <activity android:name=".MainActivity3" />
         <activity android:name=".MainActivity4" />
     </application>
