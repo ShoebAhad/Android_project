@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-//my name is abir
 
 public class NotificationFragment extends Fragment {
 
@@ -20,7 +19,6 @@ public class NotificationFragment extends Fragment {
     public NotificationFragment() {
         // Required empty public constructor
     }
-
 
     public static NotificationFragment newInstance(String param1, String param2) {
         NotificationFragment fragment = new NotificationFragment();
