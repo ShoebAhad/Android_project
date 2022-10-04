@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HomeFragment"
-    android:background="#A7D2CB">
+    android:background="#5C2E7E">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,6 +20,12 @@
             android:scaleType="fitStart"
 
             app:srcCompat="@drawable/upp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_login_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_an_account_or_sign_in"/>
 
         <TextView
             android:id="@+id/search"
@@ -36,7 +42,7 @@
             android:paddingEnd="20dp"
             android:shadowColor="#F10A0A"
             android:textAlignment="center"
-            android:textColorHint="#887A7A"
+            android:textColorHint="@android:color/white"
             android:textSize="20sp"
             app:drawableLeftCompat="@drawable/ic_baseline_search" />
 
@@ -53,7 +59,7 @@
             android:paddingTop="5dp"
             android:paddingEnd="20dp"
             android:textAlignment="center"
-            android:textColorHint="#837C7C"
+            android:textColorHint="@android:color/white"
             android:textSize="20sp"
             app:drawableLeftCompat="@android:drawable/ic_menu_my_calendar"
             app:layout_constraintTop_toBottomOf="@+id/search" />
@@ -70,7 +76,7 @@
             android:paddingTop="5dp"
             android:paddingEnd="20dp"
             android:textAlignment="center"
-            android:textColorHint="#6C6262"
+            android:textColorHint="@android:color/white"
             android:textSize="20sp"
             app:drawableLeftCompat="@drawable/ic_baseline_person"
             app:layout_constraintTop_toBottomOf="@+id/datepicker" />
@@ -85,6 +91,7 @@
             android:backgroundTint="#E53935"
             android:text="@string/search"
             app:layout_constraintTop_toBottomOf="@+id/guest" />
+
     </LinearLayout>
 
 </FrameLayout>

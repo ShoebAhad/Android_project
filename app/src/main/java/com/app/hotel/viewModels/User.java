@@ -1,19 +1,17 @@
 package com.app.hotel.viewModels;
 
 public class User {
-    private String name, sex, contact_no, mail, address, division;
+    private String name, sex, contact_no, mail;
 
     public User() {
 
     }
 
-    public User(String name, String sex, String contact_no, String mail, String address, String division) {
+    public User(String name, String sex, String contact_no, String mail) {
         this.name = name;
         this.sex = sex;
         this.contact_no = contact_no;
         this.mail = mail;
-        this.address = address;
-        this.division = division;
     }
 
     public String getName() {
@@ -46,21 +44,5 @@ public class User {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getDivision() {
-        return division;
-    }
-
-    public void setDivision(String division) {
-        this.division = division;
     }
 }
