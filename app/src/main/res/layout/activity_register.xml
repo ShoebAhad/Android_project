@@ -6,7 +6,7 @@
     android:clipToPadding="false"
     android:fillViewport="true"
     android:scrollbarStyle="outsideOverlay"
-    tools:context=".ProfileActivity">
+    tools:context=".activities.RegisterActivity">
 
     <LinearLayout
         android:padding="10dp"

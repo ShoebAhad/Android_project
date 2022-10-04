@@ -1,8 +1,10 @@
-package com.app.hotel;
+package com.app.hotel.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.app.hotel.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -1,21 +1,18 @@
-package com.app.hotel;
+package com.app.hotel.activities;
 
-import android.app.DatePickerDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.app.hotel.R;
 import com.app.hotel.databinding.ActivityMainBinding;
-
-import java.util.Calendar;
+import com.app.hotel.fragments.FavouritesFragment;
+import com.app.hotel.fragments.HomeFragment;
+import com.app.hotel.fragments.NotificationFragment;
+import com.app.hotel.fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
