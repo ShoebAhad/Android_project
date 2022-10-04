@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#8BBCCC"
+    android:background="#5C2E7E"
     tools:context=".activities.LoginActivity">
 
     <LinearLayout
@@ -18,18 +18,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:hint="@string/email" />
+            android:textColor="@android:color/white"
+            android:hint="@string/email"
+            android:textColorHint="@android:color/white"/>
 
         <EditText
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="numberPassword"
+            android:textColorHint="@android:color/white"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/sign_in" />
