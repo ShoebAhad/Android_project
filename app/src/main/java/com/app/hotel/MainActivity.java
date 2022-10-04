@@ -8,21 +8,20 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends splash_activity {
     TextView textView;
-    TextView guest;
     DatePickerDialog.OnDateSetListener setListener;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      textView = findViewById(R.id.datepicker);
-        guest = findViewById(R.id.guest);
+        textView = findViewById(R.id.datepicker);
         Calendar calender = Calendar.getInstance();
         final int year = calender.get(Calendar.YEAR);
         final int month = calender.get(Calendar.MONTH);
@@ -39,29 +38,16 @@ public class MainActivity extends AppCompatActivity {
         setListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayofmonth) {
-                month = month + 1;
-                String date = day + "/" + month + "/" + year;
-                textView.setText(date);
+                    month = month + 1;
+                 String date = day + "/" + month + "/" + year;
+                 textView.setText(date);
+
             }
         };
+/*        public void openActivity2() {
+            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+        } */
 
-        guest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openActivity3();
-            }
-        });
-    }
-
-    public void openActivity3() {
-        Intent intent = new Intent(MainActivity.this, guest_size.class);
-        startActivity(intent);
     }
 }
-
-
-
-
-
-
 
