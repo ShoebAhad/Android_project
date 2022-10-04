@@ -66,5 +66,6 @@
     <string name="name">Name:</string>
     <string name="division">Division:</string>
     <string name="first_name">First name</string>
+    <string name="create_an_account_or_sign_in">Create an account or sign in</string>
 
 </resources>
