@@ -1,48 +1,48 @@
 package com.app.hotel.viewModels;
 
 public class User {
-    private String name, sex, contact_no, mail;
+    private String fname, lname, mobile, mailId;
 
     public User() {
 
     }
 
-    public User(String name, String sex, String contact_no, String mail) {
-        this.name = name;
-        this.sex = sex;
-        this.contact_no = contact_no;
-        this.mail = mail;
+    public User(String fname, String lname, String mobile, String mailId) {
+        this.fname = fname;
+        this.lname = lname;
+        this.mobile = mobile;
+        this.mailId = mailId;
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public String getSex() {
-        return sex;
+    public String getLname() {
+        return lname;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
-    public String getContact_no() {
-        return contact_no;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setContact_no(String contact_no) {
-        this.contact_no = contact_no;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public String getMail() {
-        return mail;
+    public String getMailId() {
+        return mailId;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMailId(String mailId) {
+        this.mailId = mailId;
     }
 }

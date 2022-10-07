@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5C2E7E"
+    android:background="@color/appTheme"
     android:clipToPadding="false"
     android:fillViewport="true"
     android:scrollbarStyle="outsideOverlay"
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/input_fName"
+                android:id="@+id/editTextfName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -31,65 +31,37 @@
                 android:textColor="@android:color/white"/>
             <EditText
                 android:layout_marginStart="25dp"
-                android:id="@+id/input_lName"
+                android:id="@+id/editTextlName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/displayName"
-                android:textColorHint="@android:color/white"
-                android:inputType="text"
-                android:textColor="@android:color/white" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:padding="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:text= "@string/sex" />
-
-            <Spinner
-                android:layout_marginStart="67dp"
-                android:id="@+id/gender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/sex">
-            </Spinner>
-        </LinearLayout>
-
-        <LinearLayout
-            android:padding="3dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/inputMobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/mobile"
+                android:hint="@string/last_name"
                 android:textColorHint="@android:color/white"
                 android:inputType="text"
                 android:textColor="@android:color/white" />
         </LinearLayout>
 
         <EditText
-            android:id="@+id/input_userEmail"
+            android:id="@+id/editTextMobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/prompt_email"
+            android:hint="@string/mobile"
+            android:textColorHint="@android:color/white"
+            android:inputType="text"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/register_email"
             android:textColorHint="@android:color/white"
             android:inputType="textEmailAddress"
 
             android:textColor="@android:color/white" />
 
         <EditText
-            android:id="@+id/input_password"
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_password"
@@ -98,7 +70,7 @@
             android:textColor="@android:color/white" />
 
         <EditText
-            android:id="@+id/input_password_confirm"
+            android:id="@+id/editTextConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_confirm_password"
@@ -108,7 +80,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_gravity="center_horizontal"
-            android:id="@+id/button_register"
+            android:id="@+id/buttonSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -117,6 +89,15 @@
             android:text="@string/signup"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity = "center"
+            android:visibility="gone"
+            style="@android:style/Animation" />
+
 
     </LinearLayout>
 
