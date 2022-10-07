@@ -58,14 +58,21 @@
     <string name="sex">Sex:</string>
     <string name="blood_group">Blood Group:</string>
     <string name="contact_no">Contact No:</string>
-    <string name="signup">Sign up</string>
+    <string name="signup">Create Account</string>
     <string name="prompt_confirm_password">Confirm Password</string>
     <string name="userAddress">Address</string>
     <string name="address">Address:</string>
-    <string name="mobile">Contact no</string>
+    <string name="mobile">Contact number</string>
     <string name="name">Name:</string>
     <string name="division">Division:</string>
     <string name="first_name">First name</string>
     <string name="sign_in_or_create_an_account">Sign in or create an account</string>
+    <string name="register">Register</string>
+    <string name="registerEmail">Email</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="register1">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="signInFromRegisterLayout">Sign In</string>
+    <string name="registerBanner">Register</string>
 
 </resources>
