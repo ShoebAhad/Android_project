@@ -41,28 +41,6 @@
                 android:textColor="@android:color/white" />
         </LinearLayout>
 
-        <LinearLayout
-            android:padding="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:text= "@string/sex" />
-
-            <Spinner
-                android:layout_marginStart="67dp"
-                android:id="@+id/spinnerGender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/sex">
-            </Spinner>
-        </LinearLayout>
-
         <EditText
             android:id="@+id/editTextMobile"
             android:layout_width="match_parent"
@@ -111,6 +89,15 @@
             android:text="@string/signup"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity = "center"
+            android:visibility="gone"
+            style="@android:style/Animation" />
+
 
     </LinearLayout>
 
