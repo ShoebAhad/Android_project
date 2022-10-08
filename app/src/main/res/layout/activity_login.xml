@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/input_EmailAddress"
+            android:id="@+id/etEmailInLoginLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -23,7 +23,7 @@
             android:textColorHint="@android:color/white"/>
 
         <EditText
-            android:id="@+id/input_password"
+            android:id="@+id/etPasswordInLoginLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -39,7 +39,7 @@
             android:text="@string/sign_in" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_register"
+            android:id="@+id/button_create_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -53,6 +53,14 @@
             android:textColor="@android:color/white"
             android:background="@android:color/transparent"
             android:text="@string/forgot_password" />
+
+        <ProgressBar
+            android:id="@+id/loginProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            style="@android:style/Animation" />
 
     </LinearLayout>
 

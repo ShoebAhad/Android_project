@@ -42,7 +42,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-//        this.fragmentV = view;
         button_login_register = (Button) view.findViewById(R.id.button_login_register);
         button_login_register.setOnClickListener(this);
 
