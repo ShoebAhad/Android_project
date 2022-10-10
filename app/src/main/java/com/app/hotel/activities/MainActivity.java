@@ -51,35 +51,6 @@ public class MainActivity extends AppCompatActivity{
             return true;
         });
 
-//        button_login_register = findViewById(R.id.button_login_register);
-//        button_login_register.setOnClickListener(this);
-
-
-
-//        textView = findViewById(R.id.datepicker);
-//        Calendar calender = Calendar.getInstance();
-//        final int year = calender.get(Calendar.YEAR);
-//        final int month = calender.get(Calendar.MONTH);
-//        final int day = calender.get(Calendar.DAY_OF_MONTH);
-//
-//        textView.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this,
-//                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
-//                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                datePickerDialog.show();
-//            }
-//        });
-//
-//        setListener = new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int month, int dayofmonth) {
-//                month = month + 1;
-//                String date = day + "/" + month + "/" + year;
-//                textView.setText(date);
-//            }
-//        };
-
     }
 
     private void replaceFragment(Fragment fragment) {

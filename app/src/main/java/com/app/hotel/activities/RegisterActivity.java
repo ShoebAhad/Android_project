@@ -3,6 +3,7 @@ package com.app.hotel.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -29,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private EditText editTextfName,editTextlname,editTextMobile,editTextemail,editTextPassword,
         editTextConfirmPassword;
-    private Button buttonSignUp;
+    private Button buttonSignUp, loginButtonFromRegisterLayout;
     private ProgressBar progressBar;
 
     @Override
@@ -52,19 +53,27 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         progressBar = findViewById(R.id.progressBar);
 
+        loginButtonFromRegisterLayout = findViewById(R.id.loginButtonFromRegisterLayout);
+        loginButtonFromRegisterLayout.setOnClickListener(this);
+
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.buttonSignUp:
                 createAccount();
+                return;
+            case R.id.loginButtonFromRegisterLayout:
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         }
     }
 
     private void createAccount() {
 
         String fname,lname,password,email,mobile,confirmPassword;
+
         fname = editTextfName.getText().toString().trim();
         lname = editTextlname.getText().toString().trim();
         password = editTextPassword.getText().toString().trim();
@@ -98,6 +107,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             editTextemail.setError("Provide a Valid Email Address");
+            return;
         }
 
         if(password.isEmpty()){
@@ -151,7 +161,5 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 //                        progressBar.setVisibility(View.GONE);
 //                    }
     }
-//                );
 
-//    }
 }
