@@ -7,10 +7,11 @@
     android:background="@color/appTheme">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/profile_fragment"
-        android:gravity="center"
-        android:textSize="26sp"/>
+        android:textSize="@dimen/title"
+        android:textColor="@color/white"/>
 
 </FrameLayout>

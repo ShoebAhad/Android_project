@@ -47,6 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()){

@@ -1,6 +1,5 @@
 package com.app.hotel.activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -14,10 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.app.hotel.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -86,13 +83,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
-                        Toast.makeText(LoginActivity.this, "Signed in successfully",Toast.LENGTH_SHORT).show();
-                        //redirect to homeFragment
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        assert user != null;
+                        if(user.isEmailVerified()){
+                            Toast.makeText(LoginActivity.this, "You are logged in. Enjoy your stay<3",
+                                    Toast.LENGTH_SHORT).show();
+                            //redirect to homeFragment
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        }
+                        else{
+                            user.sendEmailVerification();
+                            Toast.makeText(LoginActivity.this, "Check email to verify your account",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
                     }
                     else{
                         Toast.makeText(LoginActivity.this,
-                                "Oops! The credentials are not connected to an account",
+                                "Oops! These credentials are not connected to an account",
                                 Toast.LENGTH_LONG).show();
                     }
                     loginProgressBar.setVisibility(View.GONE);

@@ -74,5 +74,8 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="signInFromRegisterLayout">Sign In</string>
     <string name="registerBanner">Register</string>
+    <string name="account">Account</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="sign_out">Sign Out</string>
 
 </resources>
