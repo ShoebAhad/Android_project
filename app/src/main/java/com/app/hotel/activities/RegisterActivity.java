@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private FirebaseAuth mAuth;
 
+    //oye
     private EditText editTextfName,editTextlname,editTextMobile,editTextemail,editTextPassword,
         editTextConfirmPassword;
     private Button buttonSignUp, loginButtonFromRegisterLayout;
