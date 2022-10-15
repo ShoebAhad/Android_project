@@ -23,12 +23,13 @@ import com.app.hotel.R;
 import com.app.hotel.activities.GuestActivity;
 import com.app.hotel.activities.LoginActivity;
 import com.app.hotel.activities.MainActivity;
+import com.app.hotel.activities.MapsActivity;
 
 import java.util.Calendar;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
-    private TextView datepicker, guest;
+    private TextView datepicker, guest, search;
     private int year, month, day;
     private DatePickerDialog.OnDateSetListener setListener;
 
@@ -61,6 +62,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         guest = (TextView) view.findViewById(R.id.guest);
         guest.setOnClickListener(this);
 
+        search = (TextView) view.findViewById(R.id.search);
+        search.setOnClickListener(this);
+
         Calendar calender = Calendar.getInstance();
         year = calender.get(Calendar.YEAR);
         month = calender.get(Calendar.MONTH);
@@ -84,6 +88,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
             case R.id.guest:
                 startActivity(new Intent(getContext(), GuestActivity.class));
+                break;
+
+            case R.id.search:
+                startActivity(new Intent(getContext(), MapsActivity.class));
                 break;
 
             case R.id.datepicker:
