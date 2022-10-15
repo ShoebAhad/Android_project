@@ -31,15 +31,19 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDTCaPsmUOKibrJzVnIuPb2IlJbuM190FY" />
 
-        <activity
-            android:name=".activities.MapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_maps" />
+<!--        <activity-->
+<!--            android:name=".activities.MapsActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_maps" />-->
         <activity
             android:name=".activities.LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.RegisterActivity"
+            android:exported="false" />
+
+        <activity android:name=".activities.GuestActivity"
             android:exported="false" />
 
         <activity

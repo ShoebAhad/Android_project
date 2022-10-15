@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.guest_size">
+    android:background="@color/white"
+    tools:context=".activities.GuestActivity">
 
     <TextView
         android:id="@+id/select"
@@ -56,9 +57,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/select"
-        android:layout_marginLeft="157dp"
-        android:layout_marginTop="12dp"
-        android:layout_toRightOf="@id/adult"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@id/adult"
         app:srcCompat="@android:drawable/btn_plus"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -76,3 +77,4 @@
 
 
 </RelativeLayout>
+

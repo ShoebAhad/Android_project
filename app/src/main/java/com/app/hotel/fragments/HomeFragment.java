@@ -2,6 +2,7 @@ package com.app.hotel.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.GameManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -19,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.app.hotel.R;
+import com.app.hotel.activities.GuestActivity;
 import com.app.hotel.activities.LoginActivity;
 import com.app.hotel.activities.MainActivity;
 
@@ -26,7 +28,7 @@ import java.util.Calendar;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
-    private TextView datepicker;
+    private TextView datepicker, guest;
     private int year, month, day;
     private DatePickerDialog.OnDateSetListener setListener;
 
@@ -56,18 +58,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         datepicker = (TextView) view.findViewById(R.id.datepicker);
         datepicker.setOnClickListener(this);
 
+        guest = (TextView) view.findViewById(R.id.guest);
+        guest.setOnClickListener(this);
+
         Calendar calender = Calendar.getInstance();
         year = calender.get(Calendar.YEAR);
         month = calender.get(Calendar.MONTH);
         day = calender.get(Calendar.DAY_OF_MONTH);
 
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayofmonth) {
-                month = month + 1;
-                String date = day + "/" + month + "/" + year;
-                datepicker.setText(date);
-            }
+        setListener = (view1, year, month, dayofmonth) -> {
+            month = month + 1;
+            String date = day + "/" + month + "/" + year;
+            datepicker.setText(date);
         };
 
     }
@@ -79,12 +81,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.button_login_register:
                 startActivity(new Intent(getContext(), LoginActivity.class));
                 break;
+
+            case R.id.guest:
+                startActivity(new Intent(getContext(), GuestActivity.class));
+                break;
+
             case R.id.datepicker:
-                
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
+                break;
                 
         }
 
