@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.guest_size">
+    tools:context=".activities.GuestActivity">
 
     <TextView
         android:id="@+id/select"
@@ -17,14 +17,6 @@
         android:textColorHint="#FAF8F8"
         android:textSize="20sp"
         android:textStyle="bold" />
-
-    <ImageButton
-        android:id="@+id/arrow"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#D81B60"
-        app:srcCompat="@drawable/arrow"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/adult"
@@ -60,8 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/select"
-        android:layout_marginLeft="157dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginLeft="138dp"
+        android:layout_marginTop="13dp"
         android:layout_toRightOf="@id/adult"
         app:srcCompat="@android:drawable/btn_plus"
         tools:ignore="SpeakableTextPresentCheck" />

@@ -18,9 +18,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import com.app.hotel.activities.GuestActivity;
 import com.app.hotel.R;
+import com.app.hotel.activities.GuestActivity;
 import com.app.hotel.activities.LoginActivity;
 import com.app.hotel.activities.MainActivity;
+import com.google.android.gms.maps.MapsInitializer;
 
 import java.util.Calendar;
 
@@ -30,9 +33,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private int year, month, day;
     private DatePickerDialog.OnDateSetListener setListener;
 
-    public HomeFragment() {
 
-    }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,12 +80,20 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.button_login_register:
                 startActivity(new Intent(getContext(), LoginActivity.class));
                 break;
+
             case R.id.datepicker:
                 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
+                break;
+            case R.id.guest:
+                startActivity(new Intent(getContext(), GuestActivity.class));
+                break;
+            case R.id.search:
+                startActivity( new Intent (getContext(), MapsInitializer.class ));
+
                 
         }
 
