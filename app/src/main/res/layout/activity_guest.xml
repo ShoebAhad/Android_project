@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.guest_size">
+    android:background="@color/white"
+    tools:context=".activities.GuestActivity">
 
     <TextView
         android:id="@+id/select"
@@ -13,18 +14,10 @@
         android:layout_height="88dp"
         android:background="#D81B60"
         android:backgroundTint="#D81B60"
-        android:hint="Select"
+        android:hint="@string/select"
         android:textColorHint="#FAF8F8"
         android:textSize="20sp"
         android:textStyle="bold" />
-
-    <ImageButton
-        android:id="@+id/arrow"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#D81B60"
-        app:srcCompat="@drawable/arrow"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/adult"
@@ -32,6 +25,9 @@
         android:layout_height="70dp"
         android:layout_marginTop="100dp"
         android:background="@drawable/textviewborder"
+        android:textSize="50sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
         android:layout="@id/select" />
 
     <TextView
@@ -42,10 +38,11 @@
         android:background="@drawable/textviewborder" />
 
     <Button
-        android:id="@+id/Done"
+        android:id="@+id/done"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
+        android:text="@string/done"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
@@ -60,9 +57,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/select"
-        android:layout_marginLeft="157dp"
-        android:layout_marginTop="12dp"
-        android:layout_toRightOf="@id/adult"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@id/adult"
         app:srcCompat="@android:drawable/btn_plus"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -71,10 +68,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/select"
-        android:layout_marginLeft="17dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="14dp"
-        android:layout_marginRight="47dp"
-        android:layout_toRightOf="@id/adult"
+        android:layout_marginEnd="47dp"
+        android:layout_toEndOf="@id/adult"
         app:srcCompat="@android:drawable/btn_minus"
         tools:ignore="SpeakableTextPresentCheck" />
 
