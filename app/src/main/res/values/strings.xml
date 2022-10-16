@@ -77,7 +77,13 @@
     <string name="account">Account</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="sign_out">Sign Out</string>
-    <string name="select">Select</string>
+    <string name="select">Select rooms and guests</string>
     <string name="done">Done</string>
+    <string name="enter_your_email_address">Enter your Email address</string>
+    <string name="reset_password">Reset password</string>
+    <string name="rooms">Rooms</string>
+    <string name="increment">+</string>
+    <string name="decrement">-</string>
+    <string name="enter_email_address">Enter email address</string>
 
 </resources>

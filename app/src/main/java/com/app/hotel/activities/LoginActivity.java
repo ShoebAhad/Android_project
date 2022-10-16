@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button button_create_account, button_login;
     private ProgressBar loginProgressBar;
     private EditText etEmailInLoginLayout, etPasswordInLoginLayout;
     FirebaseAuth mAuth;
@@ -33,11 +32,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         loginProgressBar = findViewById((R.id.loginProgressBar));
 
-        button_create_account = findViewById(R.id.button_create_account);
+        Button button_create_account = findViewById(R.id.button_create_account);
         button_create_account.setOnClickListener(this);
 
-        button_login = findViewById(R.id.button_login);
+        Button button_login = findViewById(R.id.button_login);
         button_login.setOnClickListener(this);
+
+        Button forgotPasswordButton = findViewById(R.id.forgotPasswordButton);
+        forgotPasswordButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -46,11 +48,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.button_login:
+                signIn();
+                break;
             case R.id.button_create_account:
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
-            case R.id.button_login:
-                signIn();
+            case R.id.forgotPasswordButton:
+                Toast.makeText(this,"oy waassup", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, ResetPasswordActivity.class));
                 break;
         }
     }
@@ -84,19 +90,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
 
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        assert user != null;
-                        if(user.isEmailVerified()){
-                            Toast.makeText(LoginActivity.this, "You are logged in. Enjoy your stay<3",
-                                    Toast.LENGTH_SHORT).show();
-                            //redirect to homeFragment
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        }
-                        else{
-                            user.sendEmailVerification();
-                            Toast.makeText(LoginActivity.this, "Check email to verify your account",
-                                    Toast.LENGTH_LONG).show();
-                        }
+                        Toast.makeText(LoginActivity.this, "Signed in succefully. enjoy your stay!",Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(this, MainActivity.class));
 
                     }
                     else{

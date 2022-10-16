@@ -1,10 +1,13 @@
 package com.app.hotel.activities;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +17,7 @@ import android.widget.Toast;
 
 import com.app.hotel.R;
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -64,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void createAccount() {
 
-        String fname,lname,password,email,mobile,confirmPassword;
+        String fname, lname, password, email, mobile, confirmPassword;
 
         fname = editTextfName.getText().toString().trim();
         lname = editTextlname.getText().toString().trim();
@@ -73,48 +76,49 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mobile = editTextMobile.getText().toString().trim();
         confirmPassword = editTextConfirmPassword.getText().toString().trim();
 
-        if(fname.isEmpty()){
+        if (fname.isEmpty()) {
             editTextfName.setError("Enter a First Name");
             editTextfName.requestFocus();
             return;
         }
 
-        if(lname.isEmpty()){
+        if (lname.isEmpty()) {
             editTextlname.setError("Enter a Last Name");
             editTextlname.requestFocus();
             return;
         }
 
-        if(mobile.isEmpty()){
+        if (mobile.isEmpty()) {
             editTextMobile.setError("Enter a Phone Number");
             editTextMobile.requestFocus();
             return;
         }
 
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
             editTextemail.setError("Enter Your Email Address");
             editTextemail.requestFocus();
             return;
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             editTextemail.setError("Provide a Valid Email Address");
+            editTextemail.requestFocus();
             return;
         }
 
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             editTextPassword.setError("Enter a Password");
             editTextPassword.requestFocus();
             return;
         }
 
-        if(password.length()<6){
+        if (password.length() < 6) {
             editTextPassword.setError("Password must contain at least 6 characters");
             editTextPassword.requestFocus();
             return;
         }
-        
-        if(!confirmPassword.equals(password)){
+
+        if (!confirmPassword.equals(password)) {
             editTextConfirmPassword.setError("The password confirmation does not match");
             editTextConfirmPassword.requestFocus();
             return;
@@ -124,34 +128,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
-                    if(task.isSuccessful()){
-//                        User user= new User(fname, lname, mobile, email);
-//                        FirebaseDatabase.getInstance().getReference("Users").child(Objects
-//                                .requireNonNull(FirebaseAuth.getInstance().
-//                                getCurrentUser()).getUid()).setValue(user).addOnCompleteListener(
-//                                task1 -> {
-//                                    if(task1.isSuccessful()){
-                        Toast.makeText(RegisterActivity.this,
-                                "User was registered successfully!",
-                                Toast.LENGTH_LONG).show();
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        assert user != null;
+
+                        user.sendEmailVerification().addOnSuccessListener(unused ->
+                                Toast.makeText(RegisterActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show())
+                                .addOnFailureListener(e -> Log.d(TAG, e.getMessage()));
                         progressBar.setVisibility(View.GONE);
 
                         //redirect to login page
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    }
-                    else {
+//                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                    } else {
                         Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         progressBar.setVisibility(View.GONE);
                     }
 
                 });
-        //                    }
-//                    else{
-//                        Toast.makeText(RegisterActivity.this,
-//                                "There already exists an account registered with this email address",
-//                                Toast.LENGTH_LONG).show();
-//                        progressBar.setVisibility(View.GONE);
-//                    }
     }
 
 }
