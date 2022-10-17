@@ -1,68 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/appTheme"
-    tools:context=".activities.LoginActivity"
-    android:layout_margin="@dimen/layout_margin">
+    tools:context=".activities.LoginActivity">
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/black"
+            app:srcCompat="@drawable/logo_no_background" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin"
+            android:fontFamily="serif"
+            android:text="@string/sign_in"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title"
+            android:textStyle="bold" />
+    </FrameLayout>
+
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/etEmailInLoginLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:textColor="@android:color/white"
-            android:hint="@string/email"
-            android:textColorHint="@android:color/white"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/input_bg"
+            android:backgroundTint="@color/white"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etPasswordInLoginLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:hint="@string/password"
-            android:inputType="numberPassword"
-            android:textColorHint="@android:color/white"/>
+            <EditText
+                android:id="@+id/etEmailInLoginLayout"
+                style="@style/FirebaseUI.TextInputEditText.EmailField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:drawableStart="@drawable/custom_email_icon"
+                android:drawablePadding="@dimen/drawablePadding"
+                android:paddingStart="@dimen/drawablePadding"
+                android:paddingEnd="@dimen/drawablePadding"
+                android:background="@drawable/custom_edit_text"
+                 />
+
+            <EditText
+                android:id="@+id/etPasswordInLoginLayout"
+                style="@style/FirebaseUI.TextInputEditText.PasswordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/drawablePadding"
+                android:paddingEnd="@dimen/drawablePadding"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:hint="@string/password"
+                android:inputType="numberPassword"
+                android:minHeight="48dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:drawableStart="@drawable/custom_lock_icon"
+                android:drawablePadding="@dimen/drawablePadding"
+                android:background="@drawable/custom_edit_text"
+                 />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/sign_in" />
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="@string/sign_in"
+            android:background="@drawable/btn_bg" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_create_account"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:background="@android:color/transparent"
-            android:text="@string/create_an_account" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/forgotPasswordButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:background="@android:color/transparent"
-            android:text="@string/forgot_password" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_create_account"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="@string/create_an_account"
+                android:textColor="@android:color/black" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/forgotPasswordButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="@string/forgot_password"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
 
         <ProgressBar
-            android:id="@+id/loginProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            style="@android:style/Animation" />
+                android:id="@+id/loginProgressBar"
+                style="@android:style/Animation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-</ScrollView>
+
+
+
+</LinearLayout>

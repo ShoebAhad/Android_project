@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.forgotPasswordButton:
-                Toast.makeText(this,"oy waassup", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, ResetPasswordActivity.class));
                 break;
         }
