@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.HomeFragment"
-    android:background="@color/appTheme">
+    tools:context=".fragments.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,81 +14,90 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
+            android:layout_height="300dp"
+            android:background="@color/black"
+            app:srcCompat="@drawable/logo_no_background" />
 
-            app:srcCompat="@drawable/upp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_login_register"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_in_or_create_an_account"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/input_bg"
+            android:backgroundTint="@color/white"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textviewborder"
-            android:hint="@string/search_here"
-            android:paddingStart="20dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="20dp"
-            android:shadowColor="#F10A0A"
-            android:textAlignment="center"
-            android:textColorHint="@android:color/white"
-            android:textSize="20sp"
-            app:drawableLeftCompat="@drawable/ic_baseline_search" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_login_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
 
-        <TextView
-            android:id="@+id/datepicker"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textviewborder"
-            android:drawablePadding="10dp"
-            android:hint="@string/select_date"
-            android:paddingStart="20dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="20dp"
-            android:textAlignment="center"
-            android:textColorHint="@android:color/white"
-            android:textSize="20sp"
-            app:drawableLeftCompat="@android:drawable/ic_menu_my_calendar"
-            app:layout_constraintTop_toBottomOf="@+id/search" />
+                android:layout_marginStart="@dimen/layout_margin"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="@dimen/layout_margin"
+                android:layout_marginBottom="@dimen/layout_margin"
+                android:background="@drawable/btn_bg"
+                android:text="@string/sign_in_or_create_an_account"
+                android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/guest"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/textviewborder"
-            android:hint="@string/select_guests"
-            android:paddingStart="20dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="20dp"
-            android:textAlignment="center"
-            android:textColorHint="@android:color/white"
-            android:textSize="20sp"
-            app:drawableLeftCompat="@drawable/ic_baseline_person"
-            app:layout_constraintTop_toBottomOf="@+id/datepicker" />
+            <TextView
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/textviewborder"
+                android:hint="@string/search_here"
+                android:padding="@dimen/drawablePadding"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="20sp"
+                app:drawableLeftCompat="@drawable/ic_baseline_search" />
 
-        <Button
-            android:id="@+id/button33"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:backgroundTint="#E53935"
-            android:text="@string/search"
-            app:layout_constraintTop_toBottomOf="@+id/guest" />
+            <TextView
+                android:id="@+id/datepicker"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/textviewborder"
+                android:drawablePadding="10dp"
+                android:hint="@string/select_date"
+                android:padding="@dimen/drawablePadding"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="20sp"
+                app:drawableLeftCompat="@android:drawable/ic_menu_my_calendar" />
+
+            <TextView
+                android:id="@+id/guest"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/textviewborder"
+                android:hint="@string/select_guests"
+                android:padding="@dimen/drawablePadding"
+                android:textAlignment="center"
+                android:textColorHint="@android:color/black"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:drawableLeftCompat="@drawable/custom_person_icon" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/searchButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/layout_margin"
+                android:background="@drawable/btn_bg"
+                android:text="@string/search"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toBottomOf="@+id/guest" />
+        </LinearLayout>
+
 
     </LinearLayout>
 

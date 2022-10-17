@@ -2,6 +2,7 @@ package com.app.hotel.activities;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -16,8 +17,16 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.app.hotel.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -27,6 +36,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         editTextConfirmPassword;
     private Button buttonSignUp, loginButtonFromRegisterLayout;
     private ProgressBar progressBar;
+    private FirebaseFirestore fstore;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
 
         editTextfName = findViewById(R.id.editTextfName);
         editTextlname = findViewById(R.id.editTextlName);
@@ -129,16 +141,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        assert user != null;
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+                        assert firebaseUser != null;
 
-                        user.sendEmailVerification().addOnSuccessListener(unused ->
+                        firebaseUser.sendEmailVerification().addOnSuccessListener(unused ->
                                 Toast.makeText(RegisterActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show())
                                 .addOnFailureListener(e -> Log.d(TAG, e.getMessage()));
                         progressBar.setVisibility(View.GONE);
 
-                        //redirect to login page
-//                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        userID = mAuth.getCurrentUser().getUid();
+
+                        DocumentReference documentReference = fstore.collection("users").document(userID);
+                        Map<String,Object>user = new HashMap<>();
+                        user.put("First_Name",fname);
+                        user.put("Last_Name", lname);
+                        user.put("email",email);
+                        user.put("phone",mobile);
+
+                        documentReference.set(user).addOnSuccessListener(unused ->
+                                        Log.d(TAG, "user profile is created for " + userID))
+                                .addOnFailureListener(e ->
+                                        Log.d(TAG, e.toString()));
+
+//                        redirect to login page
+                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                     } else {
                         Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         progressBar.setVisibility(View.GONE);
