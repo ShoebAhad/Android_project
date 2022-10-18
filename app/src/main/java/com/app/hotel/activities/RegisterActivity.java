@@ -17,8 +17,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.app.hotel.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -144,11 +146,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         FirebaseUser firebaseUser = mAuth.getCurrentUser();
                         assert firebaseUser != null;
 
-                        firebaseUser.sendEmailVerification().addOnSuccessListener(unused ->
-                                Toast.makeText(RegisterActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show())
-                                .addOnFailureListener(e -> Log.d(TAG, e.getMessage()));
-                        progressBar.setVisibility(View.GONE);
+//                        firebaseUser.sendEmailVerification().addOnSuccessListener(unused ->
+//                                Toast.makeText(RegisterActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show())
+//                                .addOnFailureListener(e -> Log.d(TAG, e.getMessage()));
 
+                        firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(RegisterActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
+                                }
+                                else{
+                                    Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
                         userID = mAuth.getCurrentUser().getUid();
 
                         DocumentReference documentReference = fstore.collection("users").document(userID);
@@ -163,12 +175,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                 .addOnFailureListener(e ->
                                         Log.d(TAG, e.toString()));
 
+
 //                        redirect to login page
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                     } else {
                         Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.GONE);
                     }
+                    progressBar.setVisibility(View.GONE);
 
                 });
     }

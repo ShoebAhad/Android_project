@@ -34,7 +34,7 @@
                 android:text="@string/registerBanner"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/title"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </FrameLayout>
 

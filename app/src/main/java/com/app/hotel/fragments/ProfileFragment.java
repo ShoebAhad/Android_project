@@ -9,10 +9,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.hotel.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,6 +29,7 @@ import java.util.concurrent.Executor;
 public class ProfileFragment extends Fragment {
 
     private TextView nameTextView, numberTextView, emailTextView;
+    private Button signOut;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -55,16 +60,38 @@ public class ProfileFragment extends Fragment {
         numberTextView = view.findViewById(R.id.numberTextView);
         emailTextView = view.findViewById(R.id.emailTextView);
 
+        signOut = view.findViewById(R.id.signOut);
+
         String userID = mAuth.getCurrentUser().getUid();
 
         DocumentReference documentReference = fstore.collection("users").document(userID);
 
-        documentReference.addSnapshotListener((Executor) this, (documentSnapshot, error) -> {
-            assert documentSnapshot != null;
-            nameTextView.setText(documentSnapshot.getString("First_Name"));
-            numberTextView.setText(documentSnapshot.getString("email"));
-            emailTextView.setText(documentSnapshot.getString("phone"));
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.exists()){
+                    nameTextView.setText(new StringBuilder().append(documentSnapshot.getString("First_Name")).append("  ").
+                            append(documentSnapshot.getString("Last_Name")).toString());
+                    numberTextView.setText(documentSnapshot.getString("phone"));
+                    emailTextView.setText(documentSnapshot.getString("email"));
+                }
+                else{
+                    Toast.makeText(getContext(),"Data not found",Toast.LENGTH_LONG).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(),e.toString(),Toast.LENGTH_LONG).show();
+            }
         });
+
+        if(mAuth.getCurrentUser() != null){
+            signOut.setVisibility(View.VISIBLE);
+        }
+        else{
+            signOut.setVisibility(View.GONE);
+        }
 
     }
 }

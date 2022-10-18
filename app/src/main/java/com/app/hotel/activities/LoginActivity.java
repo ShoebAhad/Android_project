@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.app.hotel.R;
+import com.app.hotel.fragments.ProfileFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -88,9 +89,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
+                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
 
-                        Toast.makeText(LoginActivity.this, "Signed in succefully. enjoy your stay!",Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(this, MainActivity.class));
+                        if(firebaseUser.isEmailVerified()){
+                            Toast.makeText(LoginActivity.this, "Signed in successfully. enjoy your stay!",Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(this, MainActivity.class));
+                        }
+                        else{
+                            Toast.makeText(LoginActivity.this, "Please verify your account",Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                     else{
