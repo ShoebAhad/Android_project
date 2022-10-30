@@ -11,4 +11,5 @@
     <color name="Red">#FFE53935</color>
     <color name="darkRed">#8B0000</color>
     <color name="appTheme">#5F9DF7</color>
+    <color name="colorDivider">#1D49E7</color>
 </resources>
