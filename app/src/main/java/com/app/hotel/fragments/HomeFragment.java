@@ -75,21 +75,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
             case R.id.guest:
                 startActivity(new Intent(getContext(), GuestActivity.class));
-                getActivity().finish();
                 break;
 
             case R.id.search:
                 startActivity(new Intent(getContext(), MapsActivity.class));
-                //   getActivity().finish();
                 break;
 
             case R.id.datepicker:
-//                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-//                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
-//                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                datePickerDialog.show();
-//              //  getActivity().finish();
-//                break;
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), (view1, year, month, day) -> {
                     month = month + 1;
                     String date = day + "/" + month + "/" + year;

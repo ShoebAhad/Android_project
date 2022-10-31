@@ -31,7 +31,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private TextView nameTextView, numberTextView, emailTextView;
 
     public ProfileFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
