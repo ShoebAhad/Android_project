@@ -98,10 +98,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
                 datePickerDialog.show();
                 break;
-<<<<<<< HEAD
-=======
-
->>>>>>> 0d1d1292c1010d7d2c87249f0b01fa096d4f674f
         }
     }
 
