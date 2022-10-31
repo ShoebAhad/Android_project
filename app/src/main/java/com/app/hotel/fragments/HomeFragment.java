@@ -2,27 +2,23 @@ package com.app.hotel.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.GameManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.TextView;
-
 import com.app.hotel.R;
 import com.app.hotel.activities.GuestActivity;
 import com.app.hotel.activities.LoginActivity;
-import com.app.hotel.activities.MainActivity;
 import com.app.hotel.activities.MapsActivity;
 
 import java.util.Calendar;
@@ -102,6 +98,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
                 datePickerDialog.show();
                 break;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0d1d1292c1010d7d2c87249f0b01fa096d4f674f
         }
     }
 
