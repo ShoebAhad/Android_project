@@ -47,18 +47,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public boolean onQueryTextSubmit(String s) {
                 String location = searchView.getQuery().toString();
                 List<Address> addressList = null;
-                if (location != null || !location.equals("")) {
-                    Geocoder geocoder = new Geocoder(MapsActivity.this);
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    Address address = addressList.get(0);
-                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                Geocoder geocoder = new Geocoder(MapsActivity.this);
+                try {
+                    addressList = geocoder.getFromLocationName(location, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+                Address address = addressList.get(0);
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                 return false;
             }
 

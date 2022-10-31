@@ -54,9 +54,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-        Button button_login_register = (Button) view.findViewById(R.id.button_login_register);
+        Button button_login_register = view.findViewById(R.id.button_login_register);
         button_login_register.setOnClickListener(this);
-        datepicker = (TextView) view.findViewById(R.id.datepicker);
+        datepicker = view.findViewById(R.id.datepicker);
         datepicker.setOnClickListener(this);
 
         guest = (TextView) view.findViewById(R.id.guest);

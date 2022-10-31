@@ -1,5 +1,6 @@
 package com.app.hotel.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import com.app.hotel.databinding.ActivityMainBinding;
 import com.app.hotel.fragments.FavouritesFragment;
 import com.app.hotel.fragments.HomeFragment;
 import com.app.hotel.fragments.ProfileFragment;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +25,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new HomeFragment());
+
+        if(FirebaseAuth.getInstance().getCurrentUser()==null)
+        {
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+//            finish();
+        }
+        else replaceFragment(new HomeFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {

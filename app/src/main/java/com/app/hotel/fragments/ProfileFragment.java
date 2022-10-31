@@ -1,5 +1,7 @@
 package com.app.hotel.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,26 +12,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.hotel.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.app.hotel.activities.LoginActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
+
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.util.concurrent.Executor;
+import java.util.Objects;
 
-public class ProfileFragment extends Fragment {
+
+public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private TextView nameTextView, numberTextView, emailTextView;
-    private Button signOut;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -60,37 +59,45 @@ public class ProfileFragment extends Fragment {
         numberTextView = view.findViewById(R.id.numberTextView);
         emailTextView = view.findViewById(R.id.emailTextView);
 
-        signOut = view.findViewById(R.id.signOut);
-
-        String userID = mAuth.getCurrentUser().getUid();
-
-        DocumentReference documentReference = fstore.collection("users").document(userID);
-
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
-                    nameTextView.setText(new StringBuilder().append(documentSnapshot.getString("First_Name")).append("  ").
-                            append(documentSnapshot.getString("Last_Name")).toString());
-                    numberTextView.setText(documentSnapshot.getString("phone"));
-                    emailTextView.setText(documentSnapshot.getString("email"));
-                }
-                else{
-                    Toast.makeText(getContext(),"Data not found",Toast.LENGTH_LONG).show();
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(),e.toString(),Toast.LENGTH_LONG).show();
-            }
-        });
+        Button signOut = view.findViewById(R.id.signOut);
+        signOut.setOnClickListener(this);
 
         if(mAuth.getCurrentUser() != null){
             signOut.setVisibility(View.VISIBLE);
         }
         else{
             signOut.setVisibility(View.GONE);
+        }
+
+        String userID = mAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = fstore.collection("users").document(userID);
+
+        documentReference.get().addOnSuccessListener(documentSnapshot -> {
+            if(documentSnapshot.exists()){
+                nameTextView.setText(new StringBuilder().append(documentSnapshot.getString("First_Name"))
+                        .append("  ").append(documentSnapshot.getString("Last_Name")).toString());
+                numberTextView.setText(documentSnapshot.getString("phone"));
+                emailTextView.setText(documentSnapshot.getString("email"));
+            }
+            else{
+                Toast.makeText(getContext(),"Data not found",Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(e -> Toast.makeText(getContext(),e.toString(),Toast.LENGTH_LONG).show());
+
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View view) {
+
+        switch (view.getId()){
+            case R.id.signOut:
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(getContext(),"Logged out successfully!",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(getContext(), LoginActivity.class));
+                getActivity().finish();
+                break;
         }
 
     }

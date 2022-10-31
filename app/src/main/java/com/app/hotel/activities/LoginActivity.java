@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.app.hotel.R;
-import com.app.hotel.fragments.ProfileFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -43,6 +42,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgotPasswordButton.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+
+        if(mAuth.getCurrentUser() != null)
+        {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -54,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.button_create_account:
                 startActivity(new Intent(this, RegisterActivity.class));
+                finish();
                 break;
             case R.id.forgotPasswordButton:
                 startActivity(new Intent(this, ResetPasswordActivity.class));
