@@ -29,7 +29,7 @@ import java.util.Calendar;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
-    private TextView datepicker, guest, search;
+    private TextView datepicker;
     private int year, month, day;
     private DatePickerDialog.OnDateSetListener setListener;
 
@@ -54,15 +54,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
-        Button button_login_register = view.findViewById(R.id.button_login_register);
-        button_login_register.setOnClickListener(this);
+
+
         datepicker = view.findViewById(R.id.datepicker);
         datepicker.setOnClickListener(this);
 
-        guest = (TextView) view.findViewById(R.id.guest);
+        TextView guest = (TextView) view.findViewById(R.id.guest);
         guest.setOnClickListener(this);
 
-        search = (TextView) view.findViewById(R.id.search);
+        TextView search = (TextView) view.findViewById(R.id.search);
         search.setOnClickListener(this);
 
         Calendar calender = Calendar.getInstance();
@@ -70,66 +70,47 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         month = calender.get(Calendar.MONTH);
         day = calender.get(Calendar.DAY_OF_MONTH);
 
-        setListener = (view1, year, month, dayofmonth) -> {
-            month = month + 1;
-            String date = day + "/" + month + "/" + year;
-            datepicker.setText(date);
-        };
-
     }
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.button_login_register:
-                startActivity(new Intent(getContext(), LoginActivity.class));
-                break;
+        switch (view.getId()) {
 
             case R.id.guest:
                 startActivity(new Intent(getContext(), GuestActivity.class));
+                getActivity().finish();
                 break;
 
             case R.id.search:
                 startActivity(new Intent(getContext(), MapsActivity.class));
+                //   getActivity().finish();
                 break;
 
             case R.id.datepicker:
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+//                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
+//                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                datePickerDialog.show();
+//              //  getActivity().finish();
+//                break;
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), (view1, year, month, day) -> {
+                    month = month + 1;
+                    String date = day + "/" + month + "/" + year;
+                    datepicker.setText(date);
+                }, year, month, day);
+
                 datePickerDialog.show();
                 break;
-                
         }
-
-
     }
 
 }
 
 
 
-//        textView = findViewById(R.id.datepicker);
-//        Calendar calender = Calendar.getInstance();
-//final int year = calender.get(Calendar.YEAR);
-//final int month = calender.get(Calendar.MONTH);
-//final int day = calender.get(Calendar.DAY_OF_MONTH);
-//
-//        textView.setOnClickListener(new View.OnClickListener() {
-//public void onClick(View view) {
-//        DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this,
-//        android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, year, month, day);
-//        datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        datePickerDialog.show();
-//        }
-//        });
-//
-//        setListener = new DatePickerDialog.OnDateSetListener() {
-//@Override
-//public void onDateSet(DatePicker view, int year, int month, int dayofmonth) {
-//        month = month + 1;
-//        String date = day + "/" + month + "/" + year;
-//        textView.setText(date);
-//        }
-//        };
+
+
+
+
+

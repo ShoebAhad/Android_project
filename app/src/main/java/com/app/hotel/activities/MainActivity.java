@@ -12,6 +12,7 @@ import com.app.hotel.R;
 import com.app.hotel.databinding.ActivityMainBinding;
 import com.app.hotel.fragments.FavouritesFragment;
 import com.app.hotel.fragments.HomeFragment;
+//import com.app.hotel.fragments.ProfileFragment;
 import com.app.hotel.fragments.ProfileFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -26,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if(FirebaseAuth.getInstance().getCurrentUser()==null)
-        {
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-//            finish();
-        }
-        else replaceFragment(new HomeFragment());
+//        if(FirebaseAuth.getInstance().getCurrentUser()==null)
+//        {
+//            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+////            finish();
+//        }
+        replaceFragment(new HomeFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {

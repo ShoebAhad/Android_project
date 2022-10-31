@@ -25,19 +25,7 @@
             android:backgroundTint="@color/white"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_login_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
 
-                android:layout_marginStart="@dimen/layout_margin"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="@dimen/layout_margin"
-                android:layout_marginBottom="@dimen/layout_margin"
-                android:background="@drawable/btn_bg"
-                android:text="@string/sign_in_or_create_an_account"
-                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/search"

@@ -62,13 +62,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         Button signOut = view.findViewById(R.id.signOut);
         signOut.setOnClickListener(this);
 
-        if(mAuth.getCurrentUser() != null){
-            signOut.setVisibility(View.VISIBLE);
-        }
-        else{
-            signOut.setVisibility(View.GONE);
-        }
-
         String userID = mAuth.getCurrentUser().getUid();
 
         DocumentReference documentReference = fstore.collection("users").document(userID);

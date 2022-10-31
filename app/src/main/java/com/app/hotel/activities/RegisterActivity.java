@@ -151,17 +151,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 //                                Toast.makeText(RegisterActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show())
 //                                .addOnFailureListener(e -> Log.d(TAG, e.getMessage()));
 
-                        firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(RegisterActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
-                                }
-                                else{
-                                    Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                }
+                        firebaseUser.sendEmailVerification().addOnCompleteListener(task1 -> {
+                            if(task1.isSuccessful()){
+                                Toast.makeText(RegisterActivity.this, "Check email to verify your account", Toast.LENGTH_LONG).show();
+
+                                //                        redirect to login page
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            }
+                            else{
+                                Toast.makeText(RegisterActivity.this, task1.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
                         });
+
                         userID = mAuth.getCurrentUser().getUid();
 
                         DocumentReference documentReference = fstore.collection("users").document(userID);
@@ -177,8 +178,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                         Log.d(TAG, e.toString()));
 
 
-//                        redirect to login page
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                     } else {
                         Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
