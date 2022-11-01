@@ -34,8 +34,11 @@
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/ic_baseline_phone_focused.xml" value="0.2555" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/ic_baseline_search.xml" value="0.2555" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/ic_baseline_security.xml" value="0.1915" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/ic_baseline_signal_wifi_off_24.xml" value="0.2555" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/input_bg.xml" value="0.1835" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/round_bg.xml" value="0.2555" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/textviewborder.xml" value="0.1915" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/layout-w1240dp/check_internet_dialog.xml" value="0.25" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_guest.xml" value="0.264" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_guest_size.xml" value="0.2484375" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_login.xml" value="0.27350427350427353" />
@@ -46,6 +49,8 @@
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_register.xml" value="0.2484375" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_reset_password.xml" value="0.264" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_splash.xml" value="0.2484375" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/check_internet_dialog.xml" value="0.27350427350427353" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.27350427350427353" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_favourites.xml" value="0.2484375" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_notification.xml" value="0.2484375" />

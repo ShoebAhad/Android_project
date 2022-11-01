@@ -78,7 +78,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         switch (view.getId()) {
 
             case R.id.guest:
-                startActivity(new Intent(getContext(), GuestActivity.class));
+                BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+                bottomSheetFragment.show(getParentFragmentManager(),bottomSheetFragment.getTag());
                 break;
 
             case R.id.search:
