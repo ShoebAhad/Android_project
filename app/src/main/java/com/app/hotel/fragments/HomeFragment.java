@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.app.hotel.R;
@@ -22,6 +23,7 @@ import com.app.hotel.activities.LoginActivity;
 import com.app.hotel.activities.MapsActivity;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
@@ -50,6 +52,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         super.onViewCreated(view, savedInstanceState);
+
+        Objects.requireNonNull(((AppCompatActivity)getActivity()).getSupportActionBar()).hide();
 
 
         datepicker = view.findViewById(R.id.datepicker);
