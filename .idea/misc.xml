@@ -22,6 +22,7 @@
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/custom_email_icon.xml" value="0.2555" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/custom_lock_icon.xml" value="0.2555" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/custom_phone_icon.xml" value="0.2555" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/guest_bottom_sheet.xml" value="0.2715" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/ic_baseline_email.xml" value="0.1915" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2555" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/drawable/ic_baseline_email_24_focused.xml" value="0.2555" />
@@ -52,9 +53,12 @@
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/check_internet_dialog.xml" value="0.27350427350427353" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.27350427350427353" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_favourites.xml" value="0.2484375" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_guest_bottom_sheet.xml" value="0.27350427350427353" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_notification.xml" value="0.2484375" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_profile.xml" value="0.2484375" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_reset_pass_bottom_sheet.xml" value="0.25982905982905985" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/layout_profile.xml" value="0.27350427350427353" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2484375" />
       </map>
     </option>

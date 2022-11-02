@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/guest_bottom_sheet"
     android:orientation="vertical"
-    tools:context=".activities.GuestActivity"
     android:backgroundTint="@color/white">
 
     <TextView

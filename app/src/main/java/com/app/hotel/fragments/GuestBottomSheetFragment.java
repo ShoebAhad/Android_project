@@ -15,14 +15,14 @@ import android.widget.TextView;
 import com.app.hotel.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class BottomSheetFragment extends BottomSheetDialogFragment implements View.OnClickListener{
+public class GuestBottomSheetFragment extends BottomSheetDialogFragment implements View.OnClickListener{
 
     TextView value1,value2,value3;
     Button increment1,increment2,increment3,decrement1,decrement2,decrement3;
     Button done;
     int count = 0;
 
-    public BottomSheetFragment() {
+    public GuestBottomSheetFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +35,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bottom_sheet, container, false);
+        return inflater.inflate(R.layout.fragment_guest_bottom_sheet, container, false);
 
     }
 
