@@ -30,6 +30,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,6 +43,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -51,7 +53,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     boolean isPermissionGranted;
     FloatingActionButton currLocFab;
     private FusedLocationProviderClient mLoactionClient;
-    private static int GPS_REQUEST_CODE = 9001;
+    private static final int GPS_REQUEST_CODE = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +69,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         initMap();
 
-        currLocFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getCurrentLocation();
-            }
-        });
+        currLocFab.setOnClickListener(view -> getCurrentLocation());
 
     }
 
@@ -86,16 +83,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override
                     public boolean onQueryTextSubmit(String s) {
-                        String location = searchView.getQuery().toString();
-                        List<Address> addressList = null;
-                        Geocoder geocoder = new Geocoder(MapsActivity.this);
-                        try {
-                            addressList = geocoder.getFromLocationName(location, 1);
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                        String locationName = searchView.getQuery().toString();
+                        Geocoder geocoder = new Geocoder(MapsActivity.this, Locale.getDefault());
+
+                        try{
+                            List<Address> addressList = geocoder.getFromLocationName(locationName,1);
+
+                            if(addressList.size()>0){
+                                Address address = addressList.get(0);
+                                gotoLocation(address.getLatitude(),address.getLongitude());
+
+                                mMap.addMarker(new MarkerOptions().position(new LatLng(address.getLatitude(),address.getLongitude())));
+                            }
+                        } catch (Exception e) {
+//                            e.printStackTrace();
                         }
-                        Address address = addressList.get(0);
-                        gotoLocation(address.getLatitude(),address.getLongitude());
+
                         return false;
                     }
 
@@ -173,7 +176,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMyLocationEnabled(true);
-
     }
 
     @Override
