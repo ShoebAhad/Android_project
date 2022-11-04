@@ -132,7 +132,7 @@
             android:orientation="vertical"
             android:padding="20dp">
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Full Name"
+                android:hint="@string/full_name"
                 android:id="@+id/full_name_profile"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">

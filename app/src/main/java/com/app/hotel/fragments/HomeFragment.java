@@ -3,8 +3,7 @@ package com.app.hotel.fragments;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +19,8 @@ import androidx.fragment.app.Fragment;
 import com.app.hotel.R;
 import com.app.hotel.activities.MapsActivity;
 import com.app.hotel.activities.NetworkChangeListener;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
@@ -29,9 +30,6 @@ import java.util.Objects;
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private TextView dateRangePicker;
-    private int year, month, day;
-    private DatePickerDialog.OnDateSetListener setListener;
-    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     MaterialDatePicker materialDatePicker;
 
     public HomeFragment() {
@@ -63,20 +61,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         dateRangePicker.setOnClickListener(this);
 
 
-        TextView guest = (TextView) view.findViewById(R.id.guest);
+        TextView guest = view.findViewById(R.id.guest);
         guest.setOnClickListener(this);
 
-        TextView search = (TextView) view.findViewById(R.id.search);
+        TextView search = view.findViewById(R.id.search);
         search.setOnClickListener(this);
 
-        materialDatePicker = MaterialDatePicker.Builder.dateRangePicker().
+        CalendarConstraints.Builder constraintsBuilder =
+                new CalendarConstraints.Builder()
+                        .setValidator(DateValidatorPointForward.now());
+
+        materialDatePicker = MaterialDatePicker.Builder.dateRangePicker().setCalendarConstraints(constraintsBuilder.build()).
                 setSelection(Pair.create(MaterialDatePicker.thisMonthInUtcMilliseconds(),
                         MaterialDatePicker.todayInUtcMilliseconds())).build();
-
-//        Calendar calender = Calendar.getInstance();
-//        year = calender.get(Calendar.YEAR);
-//        month = calender.get(Calendar.MONTH);
-//        day = calender.get(Calendar.DAY_OF_MONTH);
 
     }
 
@@ -98,17 +95,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             //--------------------------------datepicker dialog -----------------------//
             case R.id.dateRangePicker:
-                materialDatePicker.show(getParentFragmentManager(), "Tag_picker");
+                materialDatePicker.show(getParentFragmentManager(), "tag_picker");
                 materialDatePicker.addOnPositiveButtonClickListener(selection ->
                         dateRangePicker.setText(materialDatePicker.getHeaderText()));
-
-////                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), (view1, year, month, day) -> {
-//                    month = month + 1;
-//                    String date = day + "/" + month + "/" + year;
-//                    datepicker.setText(date);
-//                }, year, month, day);
-//
-//                datePickerDialog.show();
                 break;
         }
     }
