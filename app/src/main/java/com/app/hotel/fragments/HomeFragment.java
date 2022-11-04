@@ -1,9 +1,7 @@
 package com.app.hotel.fragments;
 
 import android.annotation.SuppressLint;
-import android.app.DatePickerDialog;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +16,10 @@ import androidx.fragment.app.Fragment;
 
 import com.app.hotel.R;
 import com.app.hotel.activities.MapsActivity;
-import com.app.hotel.activities.NetworkChangeListener;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
-import java.util.Calendar;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -55,7 +50,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).hide();
-
 
         dateRangePicker = view.findViewById(R.id.dateRangePicker);
         dateRangePicker.setOnClickListener(this);
@@ -90,7 +84,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
             //--------------------------------map search----------------------//
             case R.id.search:
-                startActivity(new Intent(getContext(), MapsActivity.class));
+                startActivity(new Intent(getContext(),MapsActivity.class));
                 break;
 
             //--------------------------------datepicker dialog -----------------------//
