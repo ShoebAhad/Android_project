@@ -44,7 +44,7 @@
                 app:drawableLeftCompat="@drawable/ic_baseline_search" />
 
             <TextView
-                android:id="@+id/datepicker"
+                android:id="@+id/dateRangePicker"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
