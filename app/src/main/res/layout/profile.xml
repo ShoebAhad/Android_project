@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
                 android:text="Jawad Abir"
                 android:textColor="#000"
                 android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/username_field"
                 android:layout_width="wrap_content"
@@ -40,7 +42,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/profile_image"
                 android:includeFontPadding="false"
-                android:text="Jawad Abir"
+                android:text="01971866266"
                 android:textSize="14sp" />
         </RelativeLayout>
 
@@ -135,19 +137,21 @@
                 android:hint="@string/full_name"
                 android:id="@+id/full_name_profile"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+                android:layout_width="match_parent"
+                android:textColorHint="@color/black">
                 <com.google.android.material.textfield.TextInputEditText
                     android:drawableStart="@drawable/custom_person_icon"
                     android:drawablePadding="10dp"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:background="@drawable/custom_edit_text"/>
+                    android:background="@drawable/custom_edit_text" />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:hint="Phone Number"
                 android:id="@+id/phone_number_profile"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+                android:layout_width="match_parent"
+                android:textColorHint="@color/black">
                 <com.google.android.material.textfield.TextInputEditText
                     android:drawableStart="@drawable/custom_phone_icon"
                     android:drawablePadding="10dp"
@@ -156,10 +160,11 @@
                     android:background="@drawable/custom_edit_text"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:hint="Full Name"
+                android:hint="Email Address"
                 android:id="@+id/email_profile"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+                android:layout_width="match_parent"
+                android:textColorHint="@color/black">
                 <com.google.android.material.textfield.TextInputEditText
                     android:drawableStart="@drawable/custom_email_icon"
                     android:drawablePadding="10dp"

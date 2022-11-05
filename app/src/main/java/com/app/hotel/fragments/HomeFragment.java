@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private TextView dateRangePicker;
     MaterialDatePicker materialDatePicker;
+    Button searchButton;
 
     public HomeFragment() {
 
@@ -53,6 +55,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         dateRangePicker = view.findViewById(R.id.dateRangePicker);
         dateRangePicker.setOnClickListener(this);
+
+        searchButton = view.findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(this);
 
 
         TextView guest = view.findViewById(R.id.guest);
@@ -93,6 +98,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 materialDatePicker.addOnPositiveButtonClickListener(selection ->
                         dateRangePicker.setText(materialDatePicker.getHeaderText()));
                 break;
+//            case R.id.searchButton:
+//                startActivity(new Intent(getContext(), HotelActivity.class));
         }
     }
 
