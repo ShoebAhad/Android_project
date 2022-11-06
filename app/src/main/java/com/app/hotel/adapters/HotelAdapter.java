@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.hotel.R;
 import com.app.hotel.activities.HotelDetailsActivity;
 import com.app.hotel.viewModels.Hotel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -49,15 +50,13 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
                 .centerCrop()
                 .into(holder.hotelImage);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, holder.hotelName.getText().toString(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext, HotelDetailsActivity.class);
+        holder.itemView.setOnClickListener(v -> {
+
+            Toast.makeText(mContext, holder.hotelName.getText().toString(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(mContext, HotelDetailsActivity.class);
 //                intent.putExtra("name")
 
-                mContext.startActivity(intent);
-            }
+            mContext.startActivity(intent);
         });
     }
 
@@ -69,6 +68,7 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
     public class HotelViewHolder extends RecyclerView.ViewHolder {
         public TextView hotelName, hotelLocation,hotelPrice;
         public ImageView hotelImage;
+        public FloatingActionButton favFab;
 
         public HotelViewHolder(View itemView) {
             super(itemView);
