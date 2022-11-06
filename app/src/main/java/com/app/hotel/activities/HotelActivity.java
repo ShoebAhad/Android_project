@@ -1,11 +1,15 @@
 package com.app.hotel.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class HotelActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -28,14 +32,11 @@ public class HotelActivity extends AppCompatActivity {
 
     private ProgressBar mProgressCircle;
 
-    private CardView hotelCardView;
 
     FirebaseStorage mStorage;
-    private ValueEventListener mDBListener;
 
 
-    private DatabaseReference mDatabaseRef;
-    private List<Hotel> mUploads;
+    private ArrayList<Hotel> mUploads;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +53,11 @@ public class HotelActivity extends AppCompatActivity {
 
 //        mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+        DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Hotel upload = postSnapshot.getValue(Hotel.class);
                     mUploads.add(upload);
@@ -69,38 +70,68 @@ public class HotelActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(HotelActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
 //                mProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
 
-//        mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
-//            @SuppressLint("NotifyDataSetChanged")
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                mUploads.clear();
-//
-//                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-//                    Hotel upload = postSnapshot.getValue(Hotel.class);
-//                    Objects.requireNonNull(upload).setKey(postSnapshot.getKey());
-//                    mUploads.add(upload);
-//                }
-//
-//                mAdapter.notifyDataSetChanged();
-//
-////                mProgressCircle.setVisibility(View.INVISIBLE);
-//            }
+        //                mProgressCircle.setVisibility(View.INVISIBLE);
+        //                mProgressCircle.setVisibility(View.INVISIBLE);
+        ValueEventListener mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(HotelActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-////                mProgressCircle.setVisibility(View.INVISIBLE);
-//            }
-//        });
+                mUploads.clear();
 
-//        @Override
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Hotel upload = postSnapshot.getValue(Hotel.class);
+                    Objects.requireNonNull(upload).setKey(postSnapshot.getKey());
+                    mUploads.add(upload);
+                }
+
+                mAdapter.notifyDataSetChanged();
+
+//                mProgressCircle.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(HotelActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+//                mProgressCircle.setVisibility(View.INVISIBLE);
+            }
+        });
+
+//
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_hotel,menu);
+        MenuItem menuItem = menu.findItem(R.id.search_action);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.setQueryHint("Search here");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                mAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+//    @Override
 //        public void onItemClick(int position) {
 //            Toast.makeText(this, "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
 //        }
@@ -128,5 +159,5 @@ public class HotelActivity extends AppCompatActivity {
 //            mDatabaseRef.removeEventListener(mDBListener);
 //        }
 
-    }
+
 }

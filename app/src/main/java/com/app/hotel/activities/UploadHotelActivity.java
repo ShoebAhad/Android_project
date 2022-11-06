@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,20 +17,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.app.hotel.R;
 import com.app.hotel.viewModels.Hotel;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 public class UploadHotelActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;
 
-//    private TextView mTextViewShowUploads;
-    private EditText hotel_name,hotel_price,hotel_location;
+    //    private TextView mTextViewShowUploads;
+    private EditText hotel_name, hotel_price, hotel_location;
     private ImageView image_view;
     private ProgressBar progress_bar;
 
@@ -47,7 +46,7 @@ public class UploadHotelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_hotel);
 
-        Button button_choose_image = findViewById(R.id.button_choose_image);
+        FloatingActionButton button_choose_image = findViewById(R.id.button_choose_image);
         Button button_upload = findViewById(R.id.button_upload);
 //        mTextViewShowUploads = findViewById(R.id.text_view_show_uploads);
 
@@ -64,14 +63,11 @@ public class UploadHotelActivity extends AppCompatActivity {
         button_choose_image.setOnClickListener(v ->
                 openFileChooser());
 
-        button_upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mUploadTask != null && mUploadTask.isInProgress()) {
-                    Toast.makeText(UploadHotelActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
-                } else {
-                    uploadFile();
-                }
+        button_upload.setOnClickListener(v -> {
+            if (mUploadTask != null && mUploadTask.isInProgress()) {
+                Toast.makeText(UploadHotelActivity.this, "Upload in progress", Toast.LENGTH_SHORT).show();
+            } else {
+                uploadFile();
             }
         });
 
@@ -110,42 +106,59 @@ public class UploadHotelActivity extends AppCompatActivity {
 
 
     private void uploadFile() {
+        String hotelName = hotel_name.getText().toString().trim();
+        String hotelLocation = hotel_location.getText().toString().trim();
+        String hotelPrice = hotel_price.getText().toString().trim();
+        if (hotelName.isEmpty()) {
+            hotel_name.setError("Enter Hotel Name");
+            hotel_name.requestFocus();
+            return;
+        }
+        if (hotelLocation.isEmpty()) {
+            hotel_location.setError("Enter Hotel Location");
+            hotel_location.requestFocus();
+            return;
+        }
+        if (hotelPrice.isEmpty()) {
+            hotel_price.setError("Enter room price per day");
+            hotel_price.requestFocus();
+            return;
+        }
         if (mImageUri != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
 
-            fileReference.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Handler handler = new Handler();
-                    handler.postDelayed(() -> progress_bar.setProgress(0), 500);
+            fileReference.putFile(mImageUri).addOnSuccessListener(taskSnapshot -> {
+                        Handler handler = new Handler();
+                        handler.postDelayed(() -> progress_bar.setProgress(0), 500);
 
-                    Toast.makeText(UploadHotelActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(UploadHotelActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
 
-                    fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
+                        fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
                             public void onSuccess(Uri uri) {
 
-                        Uri downloadUrl = uri;
-                        Hotel hotel = new Hotel(hotel_name.getText().toString().trim(),
-                                downloadUrl.toString(), hotel_price.getText().toString().trim(), hotel_location.getText().toString().trim());
-                        String uploadId = mDatabaseRef.push().getKey();
-                        assert uploadId != null;
-                        mDatabaseRef.child(uploadId).setValue(hotel);
-                    }
-                });}
-            }).addOnFailureListener(e -> Toast.makeText(UploadHotelActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show())
+                                Uri downloadUrl = uri;
+                                Hotel hotel = new Hotel(hotel_name.getText().toString().trim(),
+                                        downloadUrl.toString(), hotel_price.getText().toString().trim(), hotel_location.getText().toString().trim());
+                                String uploadId = mDatabaseRef.push().getKey();
+                                assert uploadId != null;
+                                mDatabaseRef.child(uploadId).setValue(hotel);
+                            }
+                        });
+                    }).addOnFailureListener(e -> Toast.makeText(UploadHotelActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show())
                     .addOnProgressListener(taskSnapshot -> {
                         double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
                         progress_bar.setProgress((int) progress);
                     });
         } else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
-        };}
-
-    private void openImagesActivity() {
-        Toast.makeText(this, "upload successful!", Toast.LENGTH_SHORT).show();
-       // Intent intent = new Intent(this, MainActivity.class);
-     //   startActivity(intent);
+        }
     }
+
+//    private void openImagesActivity() {
+//        Toast.makeText(this, "upload successful!", Toast.LENGTH_SHORT).show();
+//       // Intent intent = new Intent(this, MainActivity.class);
+//     //   startActivity(intent);
+//    }
 }

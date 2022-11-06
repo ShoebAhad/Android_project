@@ -2,8 +2,6 @@ package com.app.hotel.viewModels;
 
 import com.google.firebase.database.Exclude;
 
-import java.util.Objects;
-
 public class Hotel {
     private String name, imageUrl, location;
     private String price;
@@ -13,13 +11,10 @@ public class Hotel {
     }
 
     public Hotel(String name, String imageUrl, String price,  String location) {
-        if(Objects.equals(name, "")) this.name = "name";
-        else this.name = name;
+        this.name = name;
         this.imageUrl = imageUrl;
-        if(Objects.equals(price, "")) this.price="0";
-        else this.price = price;
-        if(Objects.equals(location, "")) this.location = "location";
-        else this.location = location;
+        this.price = price;
+        this.location = location;
     }
 
     public String getName() {

@@ -52,7 +52,7 @@
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_register.xml" value="0.2484375" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_reset_password.xml" value="0.264" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_splash.xml" value="0.2484375" />
-        <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_upload_hotel.xml" value="0.25" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/activity_upload_hotel.xml" value="0.5084485407066052" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/check_internet_dialog.xml" value="0.27350427350427353" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/content_scrolling.xml" value="0.27350427350427353" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.27350427350427353" />
@@ -69,6 +69,7 @@
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/profile.xml" value="0.33" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/layout/profile_shimmer_layout.xml" value="0.27350427350427353" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2484375" />
+        <entry key="..\:/bookPal/Android_project/app/src/main/res/menu/menu_hotel.xml" value="0.33" />
         <entry key="..\:/bookPal/Android_project/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

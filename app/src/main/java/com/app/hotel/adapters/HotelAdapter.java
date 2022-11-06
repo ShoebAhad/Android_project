@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,18 +19,20 @@ import com.app.hotel.viewModels.Hotel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
 
-public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHolder> {
+public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHolder> implements Filterable {
     private final Context mContext;
-    private final List<Hotel> hotels;
+    ArrayList<Hotel> hotels;
+    ArrayList<Hotel> hotelsFiltered;
 
 //    private OnItemClickListener mListener;
 
-    public HotelAdapter(Context context, List<Hotel> uploads) {
+    public HotelAdapter(Context context, ArrayList<Hotel> uploads) {
         mContext = context;
         hotels = uploads;
+        this.hotelsFiltered = new ArrayList<>(hotels);
     }
 
     @Override
@@ -64,6 +68,43 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
     public int getItemCount() {
         return hotels.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return hotelFilter;
+    }
+
+    private final Filter hotelFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            ArrayList<Hotel>filteredHotelList = new ArrayList<>();
+            if(charSequence == null || charSequence.length() == 0){
+                filteredHotelList.addAll(hotels);
+            }
+            else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for(Hotel hotel : hotels){
+                    if(hotel.getName().toLowerCase().contains(filterPattern)){
+                        filteredHotelList.add(hotel);
+                    }
+                }
+            }
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredHotelList;
+            filterResults.count = filteredHotelList.size();
+            return filterResults;
+        }
+
+//        @SuppressLint("NotifyDataSetChanged")
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+            hotelsFiltered.clear();
+            hotelsFiltered.addAll((ArrayList)filterResults.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
     public class HotelViewHolder extends RecyclerView.ViewHolder {
         public TextView hotelName, hotelLocation,hotelPrice;
