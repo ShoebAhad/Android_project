@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/singleHotel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,7 +9,8 @@
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    android:elevation="10dp">
 
     <LinearLayout
         android:layout_height="match_parent"
@@ -17,7 +19,7 @@
 
         <ImageView
             android:id="@+id/hotelImage"
-            android:layout_height="120dp"
+            android:layout_height="250dp"
             android:layout_width="match_parent"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/placeholder" />
@@ -27,12 +29,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Name"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:fontFamily="@font/bungee"/>
 
         <TextView
             android:id="@+id/hotelLocation"
@@ -40,23 +43,22 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="location"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/bungee"/>
 
         <TextView
             android:id="@+id/hotelPrice"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:text="BDT price"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/bungee"/>
 
 
     </LinearLayout>

@@ -16,6 +16,7 @@ import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 
 import com.app.hotel.R;
+import com.app.hotel.activities.HotelActivity;
 import com.app.hotel.activities.MapsActivity;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
@@ -25,7 +26,7 @@ import java.util.Objects;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    private TextView dateRangePicker;
+    public TextView dateRangePicker;
     MaterialDatePicker materialDatePicker;
     Button searchButton;
 
@@ -98,8 +99,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 materialDatePicker.addOnPositiveButtonClickListener(selection ->
                         dateRangePicker.setText(materialDatePicker.getHeaderText()));
                 break;
-//            case R.id.searchButton:
-//                startActivity(new Intent(getContext(), HotelActivity.class));
+            case R.id.searchButton:
+                startActivity(new Intent(getContext(), HotelActivity.class));
+                break;
         }
     }
 

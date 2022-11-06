@@ -1,19 +1,24 @@
 package com.app.hotel.viewModels;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.Objects;
+
 public class Hotel {
     private String name, imageUrl, location;
     private String price;
+    private String mKey;
     public Hotel() {
         //Empty Constructor
     }
 
     public Hotel(String name, String imageUrl, String price,  String location) {
-        if(name=="") this.name = "name";
+        if(Objects.equals(name, "")) this.name = "name";
         else this.name = name;
         this.imageUrl = imageUrl;
-        if(price=="") this.price="0";
+        if(Objects.equals(price, "")) this.price="0";
         else this.price = price;
-        if(location=="") this.location = "location";
+        if(Objects.equals(location, "")) this.location = "location";
         else this.location = location;
     }
 
@@ -47,6 +52,16 @@ public class Hotel {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    @Exclude
+    public String getKey() {
+        return mKey;
+    }
+
+    @Exclude
+    public void setKey(String key) {
+        this.mKey = key;
     }
 
 }

@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -127,10 +126,9 @@ public class UploadHotelActivity extends AppCompatActivity {
                     @Override
                             public void onSuccess(Uri uri) {
 
-
                         Uri downloadUrl = uri;
                         Hotel hotel = new Hotel(hotel_name.getText().toString().trim(),
-                                downloadUrl.toString(), hotel_price.toString().trim(), hotel_location.toString().trim());
+                                downloadUrl.toString(), hotel_price.getText().toString().trim(), hotel_location.getText().toString().trim());
                         String uploadId = mDatabaseRef.push().getKey();
                         assert uploadId != null;
                         mDatabaseRef.child(uploadId).setValue(hotel);

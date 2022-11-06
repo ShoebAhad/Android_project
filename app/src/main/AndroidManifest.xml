@@ -39,10 +39,14 @@
         <activity
             android:name=".activities.RegisterActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.UploadHotelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.HotelDetailsActivity"
+            android:exported="false" />
 
-        <activity android:name=".activities.UploadHotelActivity"
-            android:exported="false"/>
-        <activity android:name=".activities.HotelDetailsActivity"
+        <activity android:name=".activities.HotelActivity"
             android:exported="false"/>
 
         <activity
