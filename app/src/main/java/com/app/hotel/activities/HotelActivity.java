@@ -32,14 +32,13 @@ public class HotelActivity extends AppCompatActivity {
 
     private ProgressBar mProgressCircle;
 
-
     FirebaseStorage mStorage;
-
 
     private ArrayList<Hotel> mUploads;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel);
 
@@ -51,8 +50,6 @@ public class HotelActivity extends AppCompatActivity {
 
         mStorage = FirebaseStorage.getInstance();
 
-//        mDatabase = FirebaseDatabase.getInstance().getReference();
-
         DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
@@ -61,23 +58,20 @@ public class HotelActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Hotel upload = postSnapshot.getValue(Hotel.class);
                     mUploads.add(upload);
+
                 }
 
                 mAdapter = new HotelAdapter(HotelActivity.this, mUploads);
 
                 mRecyclerView.setAdapter(mAdapter);
-//                mProgressCircle.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(HotelActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-//                mProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
 
-        //                mProgressCircle.setVisibility(View.INVISIBLE);
-        //                mProgressCircle.setVisibility(View.INVISIBLE);
         ValueEventListener mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -93,13 +87,13 @@ public class HotelActivity extends AppCompatActivity {
 
                 mAdapter.notifyDataSetChanged();
 
-//                mProgressCircle.setVisibility(View.INVISIBLE);
+
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(HotelActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-//                mProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
 

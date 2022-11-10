@@ -27,8 +27,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
     ArrayList<Hotel> hotels;
     ArrayList<Hotel> hotelsFull;
 
-//    private OnItemClickListener mListener;
-
     public HotelAdapter(Context context, ArrayList<Hotel> uploads) {
         mContext = context;
         hotels = uploads;
@@ -44,7 +42,6 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
     @Override
     public void onBindViewHolder(HotelViewHolder holder, int position) {
         Hotel uploadCurrent = hotels.get(position);
-
         holder.hotelName.setText(uploadCurrent.getName());
         holder.hotelLocation.setText(uploadCurrent.getLocation());
         holder.hotelPrice.setText("BDT " + uploadCurrent.getPrice() + "/DAY");
@@ -54,9 +51,8 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
                 .centerCrop()
                 .into(holder.hotelImage);
 
-        holder.itemView.setOnClickListener(v -> {
-            mContext.startActivity(new Intent(mContext, HotelDetailsActivity.class));
-        });
+        holder.itemView.setOnClickListener(v ->
+                mContext.startActivity(new Intent(mContext, HotelDetailsActivity.class)));
     }
 
     @Override
@@ -107,68 +103,11 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
 
         public HotelViewHolder(View itemView) {
             super(itemView);
-
             hotelName = itemView.findViewById(R.id.hotelName);
             hotelPrice = itemView.findViewById(R.id.hotelPrice);
             hotelLocation = itemView.findViewById(R.id.hotelLocation);
             hotelImage = itemView.findViewById(R.id.hotelImage);
         }
-
-
     }
 
-
-//    @Override
-//    public void onClick(View v) {
-//        if (mListener != null) {
-//            int position = getAbsoluteAdapterPosition();
-//            if (position != RecyclerView.NO_POSITION) {
-//                mListener.onItemClick(position);
-//            }
-//        }
-//    }
-//
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        menu.setHeaderTitle("Select Action");
-//        MenuItem doWhatever = menu.add(Menu.NONE, 1, 1, "Do whatever");
-//        MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete");
-//
-//        doWhatever.setOnMenuItemClickListener(this);
-//        delete.setOnMenuItemClickListener(this);
-//    }
-//
-//    @Override
-//    public boolean onMenuItemClick(MenuItem item) {
-//        if (mListener != null) {
-//            int position = getAbsoluteAdapterPosition();
-//            if (position != RecyclerView.NO_POSITION) {
-//
-//                switch (item.getItemId()) {
-//                    case 1:
-//                        mListener.onWhatEverClick(position);
-//                        return true;
-//                    case 2:
-//                        mListener.onDeleteClick(position);
-//                        return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
 }
-
-//public interface OnItemClickListener {
-//    void onItemClick(int position);
-//
-//    void onWhatEverClick(int position);
-//
-//    void onDeleteClick(int position);
-//}
-//
-//    public void setOnItemClickListener(OnItemClickListener listener) {
-//        mListener = listener;
-//    }
-//}
-//}
-

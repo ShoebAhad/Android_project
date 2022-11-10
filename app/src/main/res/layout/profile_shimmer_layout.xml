@@ -33,6 +33,7 @@
             android:text=""
             android:textSize="24sp" />
 
+
         <TextView
             android:id="@+id/numberTextViewShimmer"
             android:layout_width="220dp"
@@ -60,4 +61,5 @@
             android:textSize="24sp" />
 
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
