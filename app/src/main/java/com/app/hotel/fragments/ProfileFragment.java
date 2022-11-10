@@ -68,7 +68,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Profile");
 
-
         FirebaseFirestore fstore = FirebaseFirestore.getInstance();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -77,7 +76,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         nameTextView = view.findViewById(R.id.nameTextView);
         numberTextView = view.findViewById(R.id.numberTextView);
         emailTextView = view.findViewById(R.id.emailTextView);
-        layoutProfile = view.findViewById(R.id.layoutProfile);
+        layoutProfile = view.findViewById(R.id.layout_profile);
 
         addPhotoButton = view.findViewById(R.id.addPhotoButton);
         addPhotoButton.setOnClickListener(this);
